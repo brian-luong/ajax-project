@@ -100,11 +100,13 @@ body {
 }
 
 .character-list .names {
-  padding-left: 40px;
+  padding-left: 30px;
   list-style-type: disc;
 }
 
 .category-letter {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
 }
