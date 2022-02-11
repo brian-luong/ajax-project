@@ -19,12 +19,109 @@
         <div class="row nav-items-container">
           <div class="home">Harry Potter Characters</div>
           <div class="favorites">Favorites</div>
-          <form class="search"><input type="text"><input type="submit"></div>
+          <form class="search"><input type="text" id="name" placeholder="Search by Name"><input type="submit" id="submit-btn" value="Search"></div>
       </div>
     </div>
     </div>
   </header>
   <main>
+    <div class="container">
+      <section class="main-characters" data-view="all-characters">
+        <h2>Main Characters</h2>
+        <div class="char-tile-container">
+          <div class="character-tile">
+
+            <img src="http://hp-api.herokuapp.com/images/harry.jpg" alt="">
+
+            <div class="character-name">
+              Harry Potter
+            </div>
+          </div>
+          <div class="character-tile">
+            <img src="http://hp-api.herokuapp.com/images/hermione.jpeg" alt="">
+            <div class="character-name">
+              Hermine Granger
+            </div>
+          </div>
+          <div class="character-tile">
+            <img src="http://hp-api.herokuapp.com/images/ron.jpg" alt="">
+            <div class="character-name">
+              Ron Weasley
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-characters" data-view="all-characters">
+        <h2>All Characters</h2>
+        <div class="alphabet-search">
+          <ul class="letters">
+            <li class="selected">A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+            <li>F</li>
+            <li>G</li>
+            <li>H</li>
+            <li>I</li>
+            <li>J</li>
+            <li>K</li>
+            <li>L</li>
+            <li>M</li>
+            <li>N</li>
+            <li>O</li>
+            <li>P</li>
+            <li>Q</li>
+            <li>R</li>
+            <li>S</li>
+            <li>T</li>
+            <li>U</li>
+            <li>V</li>
+            <li>W</li>
+            <li>X</li>
+            <li>Y</li>
+            <li>Z</li>
+            <li>All</li>
+          </ul>
+        </div>
+        <div class="character-list">
+          <ul class="letter-categories">
+            <li><span class="category-letter">A</span>
+              <ul class="names">
+                <li>Albus Dumbledore</li>
+                <li>Aaron Andrews</li>
+                <li>Alek Travelion</li>
+              </ul>
+            </li>
+            <li><span class="category-letter">B</span></li>
+            <li><span class="category-letter">C</span></li>
+            <li><span class="category-letter">D</span></li>
+            <li><span class="category-letter">E</span></li>
+            <li><span class="category-letter">F</span></li>
+            <li><span class="category-letter">G</span></li>
+            <li><span class="category-letter">H</span></li>
+            <li><span class="category-letter">I</span></li>
+            <li><span class="category-letter">J</span></li>
+            <li><span class="category-letter">K</span></li>
+            <li><span class="category-letter">L</span></li>
+            <li><span class="category-letter">M</span></li>
+            <li><span class="category-letter">N</span></li>
+            <li><span class="category-letter">O</span></li>
+            <li><span class="category-letter">P</span></li>
+            <li><span class="category-letter">Q</span></li>
+            <li><span class="category-letter">R</span></li>
+            <li><span class="category-letter">S</span></li>
+            <li><span class="category-letter">T</span></li>
+            <li><span class="category-letter">U</span></li>
+            <li><span class="category-letter">V</span></li>
+            <li><span class="category-letter">W</span></li>
+            <li><span class="category-letter">X</span></li>
+            <li><span class="category-letter">Y</span></li>
+            <li><span class="category-letter">Z</span></li>
+          </ul>
+        </div>
+      </section>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
