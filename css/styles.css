@@ -22,27 +22,27 @@ body {
 }
 
 .nav-items div {
-  margin-right: 20px;
+  margin-right: 1.5rem;
 }
 
 .home {
   font-size: 1.2rem;
 }
 
-#name {
-  padding: 6px 12px;
+.name {
+  padding: 0.3rem 0.75rem;
   border-radius: 4px;
   border: none;
-  font-size: 16px;
+  font-size: 1rem;
   width: 200px;
 }
 
-#submit-btn {
-  padding: 6px 12px;
+.submit-btn {
+  padding: 0.3rem 0.75rem;
   border-radius: 4px;
   border: none;
-  font-size: 16px;
-  margin-left: 8px;
+  font-size: 1rem;
+  margin-left: 0.5rem;
 }
 
 .main-characters {
@@ -60,7 +60,7 @@ body {
   flex-basis: calc(100% / 3);
   text-align: center;
   box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
-  margin: 5px;
+  margin: 0.25rem;
 }
 
 .character-name {
@@ -90,7 +90,7 @@ body {
 }
 
 .letter-categories > li {
-  margin-bottom: 15px;
+  margin-bottom: 0.9rem;
   flex-basis: 50%;
 }
 
@@ -107,7 +107,7 @@ body {
 .letters li:hover,
 .character-tile:hover,
 .nav-items div:hover,
-#submit-btn:hover {
+.submit-btn:hover {
   cursor: pointer;
 }
 
@@ -123,14 +123,14 @@ body {
 }
 
 .character-list .names {
-  padding-left: 30px;
+  padding-left: 1.8rem;
   list-style-type: disc;
 }
 
 .category-letter {
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.25rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -147,11 +147,11 @@ body {
   }
 
   .character-tile {
-    margin: 10px;
+    margin: 0.75rem;
   }
 
   .letter-categories > li {
-    margin-bottom: 15px;
+    margin-bottom: 0.9rem;
     flex-basis: 25%;
   }
 }

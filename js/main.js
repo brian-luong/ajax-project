@@ -8,8 +8,6 @@ function displayAll() {
 
 displayAll();
 
-// window.addEventListener('load', displayAll);
-
 function getCharData(letter) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'http://hp-api.herokuapp.com/api/characters');
