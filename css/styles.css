@@ -1,0 +1,153 @@
+body {
+  font-family:
+    Roboto,
+    sans-serif;
+}
+
+.nav {
+  background-color: #80272c;
+}
+
+.nav-items-container {
+  height: 85px;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #fff;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-items div {
+  margin-right: 1.5rem;
+}
+
+.home {
+  font-size: 1.2rem;
+}
+
+.name {
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  width: 200px;
+}
+
+.submit-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.main-characters {
+  text-align: center;
+}
+
+.char-tile-container {
+  display: flex;
+
+  /* flex-wrap: wrap; */
+  justify-content: center;
+}
+
+.character-tile {
+  flex-basis: calc(100% / 3);
+  text-align: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+  margin: 0.25rem;
+}
+
+.character-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.character-tile img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.alphabet-search .letters {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.letter-categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.letter-categories > li {
+  margin-bottom: 0.9rem;
+  flex-basis: 50%;
+}
+
+.letters li {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.letters li:hover,
+.character-tile:hover,
+.nav-items div:hover,
+.submit-btn:hover {
+  cursor: pointer;
+}
+
+.selected {
+  border-bottom: 2px solid red;
+  color: red;
+}
+
+.character-list ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.character-list .names {
+  padding-left: 1.8rem;
+  list-style-type: disc;
+}
+
+.category-letter {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-items-container {
+    justify-content: space-between;
+  }
+
+  .character-tile img {
+    height: 325px;
+  }
+
+  .character-tile {
+    margin: 0.75rem;
+  }
+
+  .letter-categories > li {
+    margin-bottom: 0.9rem;
+    flex-basis: 25%;
+  }
+}

@@ -5,14 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
   <header>
+    <div class="nav">
+      <div class="container">
+        <div class="row nav-items-container">
+          <div class="nav-items">
+            <div class="home">Harry Potter Characters</div>
+            <div class="favorites">Favorites</div>
+          </div>
+
+          <form class="search"><input type="text" class="name" placeholder="Search by Name"><input type="submit" class="submit-btn" value="Search"></div>
+      </div>
+    </div>
+    </div>
   </header>
   <main>
+    <div class="container">
+      <section class="main-characters" data-view="all-characters">
+        <h2>Main Characters</h2>
+        <div class="char-tile-container">
+          <div class="character-tile">
+
+            <img src="http://hp-api.herokuapp.com/images/harry.jpg" alt="">
+
+            <div class="character-name">
+              Harry Potter
+            </div>
+          </div>
+          <div class="character-tile">
+            <img src="http://hp-api.herokuapp.com/images/hermione.jpeg" alt="">
+            <div class="character-name">
+              Hermine Granger
+            </div>
+          </div>
+          <div class="character-tile">
+            <img src="http://hp-api.herokuapp.com/images/ron.jpg" alt="">
+            <div class="character-name">
+              Ron Weasley
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-characters" data-view="all-characters">
+        <h2>All Characters</h2>
+        <div class="alphabet-search">
+          <ul class="letters">
+            <li class="selected">All</li>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+            <li>F</li>
+            <li>G</li>
+            <li>H</li>
+            <li>I</li>
+            <li>J</li>
+            <li>K</li>
+            <li>L</li>
+            <li>M</li>
+            <li>N</li>
+            <li>O</li>
+            <li>P</li>
+            <li>Q</li>
+            <li>R</li>
+            <li>S</li>
+            <li>T</li>
+            <li>U</li>
+            <li>V</li>
+            <li>W</li>
+            <li>X</li>
+            <li>Y</li>
+            <li>Z</li>
+          </ul>
+        </div>
+        <div class="character-list">
+          <ul class="letter-categories">
+
+
+
+            <!-- <li>
+              <div class="category-letter">A</div>
+              <ul class="names">
+                <li><a href>Albus Dumbledore</a></li>
+                <li><a href>Aaron Andrews</a></li>
+                <li><a href>Alek Travelion</a></li>
+              </ul>
+            </li> -->
+
+
+
+          </ul>
+        </div>
+      </section>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
