@@ -6,6 +6,13 @@ function displayAll() {
   }
 }
 
+function createUl() {
+  var ul = document.createElement('ul');
+  ul.className = 'letter-categories';
+  var $characterList = document.querySelector('.character-list');
+  $characterList.appendChild(ul);
+}
+
 displayAll();
 
 function getCharData(letter) {
@@ -49,14 +56,34 @@ function getCharData(letter) {
 
 }
 
+function clearChars() {
+  var $letterCats = document.querySelector('.letter-categories');
+  $letterCats.remove();
+}
+
 function renderName(event) {
   if (event.target.tagName !== 'LI') {
     return;
   }
-
   var letter = event.target.textContent;
 
-  getCharData(letter);
+  if (event.target.textContent === 'All') {
+    clearChars();
+    createUl();
+    displayAll();
+  } else {
+    clearChars();
+    createUl();
+    getCharData(letter);
+  }
+
+  for (var i = 0; i < $letters.children.length; i++) {
+    if ($letters.children[i] === event.target) {
+      $letters.children[i].className = 'selected';
+    } else {
+      $letters.children[i].className = '';
+    }
+  }
 
 }
 
