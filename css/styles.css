@@ -84,8 +84,14 @@ body {
   flex-wrap: wrap;
 }
 
+.letter-categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .letter-categories > li {
   margin-bottom: 15px;
+  flex-basis: 50%;
 }
 
 .letters li {
@@ -142,5 +148,10 @@ body {
 
   .character-tile {
     margin: 10px;
+  }
+
+  .letter-categories > li {
+    margin-bottom: 15px;
+    flex-basis: 25%;
   }
 }

@@ -1,3 +1,15 @@
+var $letters = document.querySelector('.letters');
+
+function displayAll() {
+  for (var i = 1; i < $letters.children.length; i++) {
+    getCharData($letters.children[i].textContent);
+  }
+}
+
+displayAll();
+
+// window.addEventListener('load', displayAll);
+
 function getCharData(letter) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'http://hp-api.herokuapp.com/api/characters');
@@ -12,9 +24,7 @@ function getCharData(letter) {
     arr.sort();
 
     var $letCats = document.querySelector('.letter-categories');
-    if ($letCats.children.length > 0) {
-      $letCats.children[0].remove();
-    }
+
     var lettah = document.createElement('li');
     var div = document.createElement('div');
     div.className = 'category-letter';
@@ -24,7 +34,11 @@ function getCharData(letter) {
 
     for (var index = 0; index < arr.length; index++) {
       var listItem = document.createElement('li');
-      listItem.textContent = arr[index];
+      var anchor = document.createElement('a');
+      anchor.setAttribute('href', '');
+      anchor.textContent = arr[index];
+      listItem.appendChild(anchor);
+
       ul.appendChild(listItem);
     }
 
@@ -47,7 +61,5 @@ function renderName(event) {
   getCharData(letter);
 
 }
-
-var $letters = document.querySelector('.letters');
 
 $letters.addEventListener('click', renderName);
