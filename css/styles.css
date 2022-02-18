@@ -4,6 +4,15 @@ body {
     sans-serif;
 }
 
+a {
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .nav {
   background-color: #80272c;
 }
@@ -51,8 +60,6 @@ body {
 
 .char-tile-container {
   display: flex;
-
-  /* flex-wrap: wrap; */
   justify-content: center;
 }
 

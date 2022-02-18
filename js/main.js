@@ -1,80 +1,57 @@
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://hp-api.herokuapp.com/api/characters');
+xhr.responseType = 'json';
+xhr.addEventListener('load', displayAll);
+xhr.send();
+
+var $letterCats = document.querySelector('.letter-categories');
 var $letters = document.querySelector('.letters');
 
 function displayAll() {
   for (var i = 1; i < $letters.children.length; i++) {
-    getCharData($letters.children[i].textContent);
+    displayChar($letters.children[i].textContent);
   }
 }
 
-function createUl() {
+function displayChar(letter) {
+  var allChars = xhr.response;
+  var arr = [];
+  for (var i = 0; i < allChars.length; i++) {
+    if (allChars[i].name.toLowerCase().indexOf(letter.toLowerCase()) === 0) {
+      arr.push(allChars[i].name);
+    }
+  }
+  arr.sort();
+  var li = document.createElement('li');
+  var div = document.createElement('div');
+  div.className = 'category-letter';
+  div.textContent = letter;
   var ul = document.createElement('ul');
-  ul.className = 'letter-categories';
-  var $characterList = document.querySelector('.character-list');
-  $characterList.appendChild(ul);
+  ul.className = 'names';
+  for (var index = 0; index < arr.length; index++) {
+    var listItem = document.createElement('li');
+    var anchor = document.createElement('a');
+    anchor.textContent = arr[index];
+    listItem.appendChild(anchor);
+    ul.appendChild(listItem);
+  }
+  li.appendChild(div).appendChild(ul);
+  $letterCats.appendChild(li);
 }
 
-displayAll();
-
-function getCharData(letter) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://hp-api.herokuapp.com/api/characters');
-  xhr.responseType = 'json';
-  xhr.addEventListener('load', function () {
-    var arr = [];
-    for (var i = 0; i < xhr.response.length; i++) {
-      if (xhr.response[i].name.toLowerCase().indexOf(letter.toLowerCase()) === 0) {
-        arr.push(xhr.response[i].name);
-      }
-    }
-    arr.sort();
-
-    var $letCats = document.querySelector('.letter-categories');
-
-    var lettah = document.createElement('li');
-    var div = document.createElement('div');
-    div.className = 'category-letter';
-    div.textContent = letter;
-    var ul = document.createElement('ul');
-    ul.className = 'names';
-
-    for (var index = 0; index < arr.length; index++) {
-      var listItem = document.createElement('li');
-      var anchor = document.createElement('a');
-      anchor.setAttribute('href', '');
-      anchor.textContent = arr[index];
-      listItem.appendChild(anchor);
-
-      ul.appendChild(listItem);
-    }
-
-    lettah.appendChild(div).appendChild(ul);
-
-    $letCats.appendChild(lettah);
-  });
-
-  xhr.send();
-
-}
-
-function clearChars() {
-  var $letterCats = document.querySelector('.letter-categories');
-  $letterCats.remove();
-}
-
-function renderName(event) {
+function filterLetter() {
   if (event.target.tagName !== 'LI') {
     return;
   }
+
   var letter = event.target.textContent;
 
   if (event.target.textContent === 'All') {
-    clearChars();
-    createUl();
+    removeAllChildNodes($letterCats);
     displayAll();
   } else {
-    clearChars();
-    createUl();
-    getCharData(letter);
+    removeAllChildNodes($letterCats);
+    displayChar(letter);
   }
 
   for (var i = 0; i < $letters.children.length; i++) {
@@ -84,7 +61,12 @@ function renderName(event) {
       $letters.children[i].className = '';
     }
   }
-
 }
 
-$letters.addEventListener('click', renderName);
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+$letters.addEventListener('click', filterLetter);
