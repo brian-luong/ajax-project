@@ -70,3 +70,16 @@ function removeAllChildNodes(parent) {
 }
 
 $letters.addEventListener('click', filterLetter);
+// $letterCats.addEventListener('click', displayModal);
+
+// function displayModal(event) {
+//   var allChars = xhr.response;
+//   if (event.target.tagName !== 'A') {
+//     return;
+//   }
+//   for (var i = 0; i < allChars.length; i++) {
+//     if (allChars[i].name === event.target.textContent) {
+
+//     }
+//   }
+// }
