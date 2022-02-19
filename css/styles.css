@@ -76,6 +76,10 @@ body {
   padding: 2rem;
 }
 
+img.char-img {
+  max-width: 165px;
+}
+
 .char-description {
   line-height: 1.5;
 }

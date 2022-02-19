@@ -78,11 +78,31 @@ function displayModal(event) {
   if (event.target.tagName !== 'A') {
     return;
   }
+  var $charName = document.querySelector('.char-name');
+  var $dob = document.querySelector('.dob');
+  var $patronus = document.querySelector('.patronus');
+  var $house = document.querySelector('.house');
+  var $status = document.querySelector('.status');
+  var $gender = document.querySelector('.gender');
+  var $species = document.querySelector('.species');
+  var $ancestry = document.querySelector('.ancestry');
+  var $charImg = document.querySelector('.char-img');
+
   for (var i = 0; i < allChars.length; i++) {
     if (allChars[i].name === event.target.textContent) {
       $overlay.style.display = 'flex';
+      $charName.textContent = allChars[i].name;
+      $dob.textContent = allChars[i].dateOfBirth;
+      $patronus.textContent = allChars[i].patronus;
+      $house.textContent = allChars[i].house;
+      $status.textContent = allChars[i].alive;
+      $gender.textContent = allChars[i].gender;
+      $species.textContent = allChars[i].species;
+      $ancestry.textContent = allChars[i].ancestry;
+      $charImg.src = allChars[i].image;
     }
   }
+
 }
 
 var $circleX = document.querySelector('.fa-circle-xmark');
