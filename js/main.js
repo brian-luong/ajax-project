@@ -70,16 +70,23 @@ function removeAllChildNodes(parent) {
 }
 
 $letters.addEventListener('click', filterLetter);
-// $letterCats.addEventListener('click', displayModal);
+$letterCats.addEventListener('click', displayModal);
+var $overlay = document.querySelector('.overlay');
 
-// function displayModal(event) {
-//   var allChars = xhr.response;
-//   if (event.target.tagName !== 'A') {
-//     return;
-//   }
-//   for (var i = 0; i < allChars.length; i++) {
-//     if (allChars[i].name === event.target.textContent) {
+function displayModal(event) {
+  var allChars = xhr.response;
+  if (event.target.tagName !== 'A') {
+    return;
+  }
+  for (var i = 0; i < allChars.length; i++) {
+    if (allChars[i].name === event.target.textContent) {
+      $overlay.style.display = 'flex';
+    }
+  }
+}
 
-//     }
-//   }
-// }
+var $circleX = document.querySelector('.fa-circle-xmark');
+
+$circleX.addEventListener('click', function () {
+  $overlay.style.display = 'none';
+});

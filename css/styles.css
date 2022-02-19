@@ -11,7 +11,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgb(0 0 0 / 80%);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -20,7 +20,7 @@ body {
   text-align: center;
   background-color: #fff;
   width: 400px;
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,6 +43,20 @@ body {
   flex-basis: 10%;
   position: relative;
   left: 1rem;
+}
+
+.fa-regular,
+.far {
+  font-size: 1.5rem;
+}
+
+.fa-star {
+  color: #f0bc1b;
+}
+
+.fa-star:hover,
+.fa-circle-xmark:hover {
+  cursor: pointer;
 }
 
 .modal-char-name h4 {
@@ -116,9 +130,10 @@ a:hover {
   margin-left: 0.5rem;
 }
 
+/*
 .main-characters {
   text-align: center;
-}
+} */
 
 .char-tile-container {
   display: flex;
@@ -156,11 +171,13 @@ a:hover {
 .letter-categories {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
 }
 
 .letter-categories > li {
   margin-bottom: 0.9rem;
   flex-basis: 50%;
+  list-style: none;
 }
 
 .letters li {
