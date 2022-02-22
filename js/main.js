@@ -31,8 +31,11 @@ function displayChar(letter) {
   for (var index = 0; index < arr.length; index++) {
     var listItem = document.createElement('li');
     var anchor = document.createElement('a');
-    anchor.textContent = arr[index];
-    listItem.appendChild(anchor);
+    anchor.setAttribute('data-char', arr[index]);
+    var span = document.createElement('span');
+
+    span.textContent = arr[index];
+    listItem.appendChild(anchor).appendChild(span);
     ul.appendChild(listItem);
   }
   li.appendChild(div).appendChild(ul);
@@ -73,9 +76,16 @@ $letters.addEventListener('click', filterLetter);
 $letterCats.addEventListener('click', displayModal);
 var $overlay = document.querySelector('.overlay');
 
+var $charTiles = document.querySelectorAll('.character-tile');
+for (var i = 0; i < $charTiles.length; i++) {
+  $charTiles[i].addEventListener('click', function (event) {
+    displayModal(event);
+  });
+}
+
 function displayModal(event) {
   var allChars = xhr.response;
-  if (event.target.tagName !== 'A') {
+  if (event.target.parentNode.tagName !== 'A') {
     return;
   }
   var $charName = document.querySelector('.char-name');
@@ -89,17 +99,60 @@ function displayModal(event) {
   var $charImg = document.querySelector('.char-img');
 
   for (var i = 0; i < allChars.length; i++) {
-    if (allChars[i].name === event.target.textContent) {
+    if (allChars[i].name === event.target.parentNode.getAttribute('data-char')) {
       $overlay.style.display = 'flex';
       $charName.textContent = allChars[i].name;
-      $dob.textContent = allChars[i].dateOfBirth;
-      $patronus.textContent = allChars[i].patronus;
-      $house.textContent = allChars[i].house;
-      $status.textContent = allChars[i].alive;
-      $gender.textContent = allChars[i].gender;
-      $species.textContent = allChars[i].species;
-      $ancestry.textContent = allChars[i].ancestry;
-      $charImg.src = allChars[i].image;
+
+      if (!allChars[i].dateOfBirth) {
+        $dob.textContent = 'Unknown';
+      } else {
+        $dob.textContent = allChars[i].dateOfBirth;
+      }
+
+      if (!allChars[i].patronus) {
+        $patronus.textContent = 'Unknown';
+      } else {
+        $patronus.textContent = allChars[i].patronus;
+      }
+
+      if (!allChars[i].house) {
+        $house.textContent = 'Unknown';
+      } else {
+        $house.textContent = allChars[i].house;
+      }
+
+      if (!allChars[i].alive) {
+        $status.textContent = 'Unknown';
+      } else if (allChars[i].alive === 'true') {
+        $status.textContent = 'Alive';
+      } else {
+        $status.textContent = 'Deceased';
+      }
+
+      if (!allChars[i].gender) {
+        $gender.textContent = 'Unknown';
+      } else {
+        $gender.textContent = allChars[i].gender;
+      }
+
+      if (!allChars[i].species) {
+        $species.textContent = 'Unknown';
+      } else {
+        $species.textContent = allChars[i].species;
+      }
+
+      if (!allChars[i].ancestry) {
+        $ancestry.textContent = 'Unknown';
+      } else {
+        $ancestry.textContent = allChars[i].ancestry;
+      }
+
+      if (allChars[i].image === '') {
+        $charImg.src = 'images/No-Image-Placeholder.svg.png';
+      } else {
+        $charImg.src = allChars[i].image;
+      }
+
     }
   }
 

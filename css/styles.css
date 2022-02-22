@@ -4,6 +4,10 @@ body {
     sans-serif;
 }
 
+h2 {
+  text-align: center;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -250,5 +254,9 @@ a:hover {
 
   .modal {
     width: 450px;
+  }
+
+  .char-description {
+    width: 50%;
   }
 }
