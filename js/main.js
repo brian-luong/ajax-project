@@ -88,6 +88,7 @@ function displayModal(event) {
   if (event.target.parentNode.tagName !== 'A') {
     return;
   }
+
   var $charName = document.querySelector('.char-name');
   var $dob = document.querySelector('.dob');
   var $patronus = document.querySelector('.patronus');
@@ -97,11 +98,19 @@ function displayModal(event) {
   var $species = document.querySelector('.species');
   var $ancestry = document.querySelector('.ancestry');
   var $charImg = document.querySelector('.char-img');
+  var $star = document.querySelector('.fa-star');
+
+  if (data.favorites.indexOf(event.target.parentNode.getAttribute('data-char')) > -1) {
+    $star.className = 'fa-solid fa-star';
+  } else {
+    $star.className = 'fa-regular fa-star';
+  }
 
   for (var i = 0; i < allChars.length; i++) {
     if (allChars[i].name === event.target.parentNode.getAttribute('data-char')) {
       $overlay.style.display = 'flex';
       $charName.textContent = allChars[i].name;
+      $star.setAttribute('data-name', allChars[i].name);
 
       if (!allChars[i].dateOfBirth) {
         $dob.textContent = 'Unknown';
@@ -162,4 +171,16 @@ var $circleX = document.querySelector('.fa-circle-xmark');
 
 $circleX.addEventListener('click', function () {
   $overlay.style.display = 'none';
+});
+
+var $star = document.querySelector('.fa-star');
+$star.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'I') {
+    return;
+  }
+
+  if (data.favorites.indexOf(event.target.getAttribute('data-name')) === -1) {
+    data.favorites.push(event.target.getAttribute('data-name'));
+  }
+  $star.className = 'fa-solid fa-star';
 });
