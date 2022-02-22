@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -14,6 +16,30 @@
 
 </head>
 <body>
+  <div class="overlay">
+    <div class="modal">
+      <div class="modal-char-name">
+        <div class="favorite-star"><i class="fa-regular fa-star"></i></div>
+        <h4 class="char-name">Albus Dumbledore</h4>
+        <div class="close-modal"><i class="fa-regular fa-circle-xmark"></i></div>
+      </div>
+
+      <div class="char-details">
+        <img class="char-img" src="images\No-Image-Placeholder.svg.png" alt="Albus">
+        <div class="char-description">
+          <ul>
+            <li><strong>Date of Birth:</strong> <span class="dob">2020-1-1</span></li>
+            <li><strong>Patronus:</strong> <span class="patronus">Stag</span></li>
+            <li><strong>House:</strong> <span class="house">Hufflepuff</span></li>
+            <li><strong>Status:</strong> <span class="status">Deceased</span></li>
+            <li><strong>Gender:</strong> <span class="gender">Male</span></li>
+            <li><strong>Species:</strong> <span class="species">Human</span></li>
+            <li><strong>Ancestry:</strong> <span class="ancestry">Half-blood</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <header>
     <div class="nav">
       <div class="container">
@@ -33,26 +59,26 @@
       <section class="main-characters" data-view="all-characters">
         <h2>Main Characters</h2>
         <div class="char-tile-container">
-          <div class="character-tile">
+          <a class="character-tile" data-char="Harry Potter">
 
             <img src="http://hp-api.herokuapp.com/images/harry.jpg" alt="">
 
             <div class="character-name">
               Harry Potter
             </div>
-          </div>
-          <div class="character-tile">
+          </a>
+          <a class="character-tile" data-char="Hermione Granger">
             <img src="http://hp-api.herokuapp.com/images/hermione.jpeg" alt="">
             <div class="character-name">
               Hermine Granger
             </div>
-          </div>
-          <div class="character-tile">
+          </a>
+          <a class="character-tile" data-char="Ron Weasley">
             <img src="http://hp-api.herokuapp.com/images/ron.jpg" alt="">
             <div class="character-name">
               Ron Weasley
             </div>
-          </div>
+          </a>
         </div>
       </section>
       <section class="main-characters" data-view="all-characters">
@@ -109,6 +135,7 @@
       </section>
     </div>
   </main>
+  <script src="https://kit.fontawesome.com/b9fd98fe14.js" crossorigin="anonymous"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

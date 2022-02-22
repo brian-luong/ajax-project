@@ -4,6 +4,99 @@ body {
     sans-serif;
 }
 
+h2 {
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0 0 0 / 80%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  text-align: center;
+  background-color: #fff;
+  width: 400px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+}
+
+.modal-char-name {
+  background-color: #80272c;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.favorite-star {
+  flex-basis: 10%;
+  position: relative;
+  left: 1rem;
+}
+
+.fa-regular,
+.far {
+  font-size: 1.5rem;
+}
+
+.fa-star {
+  color: #f0bc1b;
+}
+
+.fa-star:hover,
+.fa-circle-xmark:hover {
+  cursor: pointer;
+}
+
+.modal-char-name h4 {
+  font-size: 1.5rem;
+  flex-basis: 90%;
+  margin: 1.25rem;
+}
+
+.close-modal {
+  position: relative;
+  font-size: 1.5rem;
+  flex-basis: 10%;
+  right: 0.5rem;
+}
+
+.char-details {
+  padding: 2rem;
+}
+
+img.char-img {
+  max-width: 165px;
+}
+
+.char-description {
+  line-height: 1.5;
+}
+
+a {
+  color: #297afc;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .nav {
   background-color: #80272c;
 }
@@ -45,14 +138,13 @@ body {
   margin-left: 0.5rem;
 }
 
+/*
 .main-characters {
   text-align: center;
-}
+} */
 
 .char-tile-container {
   display: flex;
-
-  /* flex-wrap: wrap; */
   justify-content: center;
 }
 
@@ -87,11 +179,13 @@ body {
 .letter-categories {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
 }
 
 .letter-categories > li {
   margin-bottom: 0.9rem;
   flex-basis: 50%;
+  list-style: none;
 }
 
 .letters li {
@@ -116,9 +210,9 @@ body {
   color: red;
 }
 
-.character-list ul {
-  list-style: none;
+.char-description ul {
   padding-left: 0;
+  list-style-type: none;
   text-align: left;
 }
 
@@ -149,5 +243,20 @@ body {
   .letter-categories > li {
     margin-bottom: 0.9rem;
     flex-basis: 25%;
+  }
+
+  .char-details {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .modal {
+    width: 450px;
+  }
+
+  .char-description {
+    width: 50%;
   }
 }
