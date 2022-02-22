@@ -8,6 +8,10 @@ h2 {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -49,13 +53,9 @@ h2 {
   left: 1rem;
 }
 
-.fa-regular,
-.far {
-  font-size: 1.5rem;
-}
-
 .fa-star {
   color: #f0bc1b;
+  font-size: 1.5rem;
 }
 
 .fa-star:hover,
