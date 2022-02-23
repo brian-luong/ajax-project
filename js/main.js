@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://hp-api.herokuapp.com/api/characters');
+xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
 xhr.responseType = 'json';
 xhr.addEventListener('load', displayAll);
 xhr.send();
@@ -132,7 +132,7 @@ function displayModal(event) {
 
       if (!allChars[i].alive) {
         $status.textContent = 'Unknown';
-      } else if (allChars[i].alive === 'true') {
+      } else if (allChars[i].alive === true) {
         $status.textContent = 'Alive';
       } else {
         $status.textContent = 'Deceased';
