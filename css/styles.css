@@ -47,6 +47,23 @@ h2 {
   align-items: center;
 }
 
+a {
+  color: #297afc;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.nav-items a {
+  color: #fff;
+}
+
+.nav-items a:first-child {
+  margin-right: 20px;
+}
+
 .favorite-star {
   flex-basis: 10%;
   position: relative;
@@ -86,15 +103,6 @@ img.char-img {
 
 .char-description {
   line-height: 1.5;
-}
-
-a {
-  color: #297afc;
-}
-
-a:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .nav {
@@ -166,7 +174,15 @@ a:hover {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
+}
+
+.favorite-char-container {
+  flex-wrap: wrap;
+}
+
+.favorite-char-tile {
+  flex-basis: 40%;
 }
 
 .alphabet-search .letters {
@@ -233,7 +249,7 @@ a:hover {
   }
 
   .character-tile img {
-    height: 325px;
+    height: 285px;
   }
 
   .character-tile {
@@ -258,5 +274,13 @@ a:hover {
 
   .char-description {
     width: 50%;
+  }
+
+  .favorite-char-tile {
+    flex-basis: 20%;
+  }
+
+  .favorite-char-tile img {
+    height: 215px;
   }
 }

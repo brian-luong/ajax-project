@@ -2,7 +2,8 @@
 
 var data = {
   view: 'homepage',
-  favorites: []
+  favorites: [],
+  favNames: []
 };
 
 var $view = document.querySelectorAll('.view');

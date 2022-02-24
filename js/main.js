@@ -4,8 +4,11 @@ xhr.responseType = 'json';
 xhr.addEventListener('load', displayAll);
 xhr.send();
 
+window.addEventListener('load', loadFavorites);
+
 var $letterCats = document.querySelector('.letter-categories');
 var $letters = document.querySelector('.letters');
+var $modal = document.querySelector('.modal');
 
 function displayAll() {
   for (var i = 1; i < $letters.children.length; i++) {
@@ -66,6 +69,14 @@ function filterLetter() {
   }
 }
 
+var $charTiles = document.querySelectorAll('.character-tile');
+
+for (var i = 0; i < $charTiles.length; i++) {
+  $charTiles[i].addEventListener('click', function (event) {
+    displayModal(event);
+  });
+}
+
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
@@ -75,13 +86,6 @@ function removeAllChildNodes(parent) {
 $letters.addEventListener('click', filterLetter);
 $letterCats.addEventListener('click', displayModal);
 var $overlay = document.querySelector('.overlay');
-
-var $charTiles = document.querySelectorAll('.character-tile');
-for (var i = 0; i < $charTiles.length; i++) {
-  $charTiles[i].addEventListener('click', function (event) {
-    displayModal(event);
-  });
-}
 
 function displayModal(event) {
   var allChars = xhr.response;
@@ -100,17 +104,11 @@ function displayModal(event) {
   var $charImg = document.querySelector('.char-img');
   var $star = document.querySelector('.fa-star');
 
-  if (data.favorites.indexOf(event.target.parentNode.getAttribute('data-char')) > -1) {
-    $star.className = 'fa-solid fa-star';
-  } else {
-    $star.className = 'fa-regular fa-star';
-  }
-
   for (var i = 0; i < allChars.length; i++) {
     if (allChars[i].name === event.target.parentNode.getAttribute('data-char')) {
       $overlay.style.display = 'flex';
       $charName.textContent = allChars[i].name;
-      $star.setAttribute('data-name', allChars[i].name);
+      $modal.setAttribute('data-name', allChars[i].name);
 
       if (!allChars[i].dateOfBirth) {
         $dob.textContent = 'Unknown';
@@ -165,6 +163,12 @@ function displayModal(event) {
     }
   }
 
+  if (data.favNames.indexOf($modal.getAttribute('data-name')) > -1) {
+    $star.className = 'fa-solid fa-star';
+  } else {
+    $star.className = 'fa-regular fa-star';
+  }
+
 }
 
 var $circleX = document.querySelector('.fa-circle-xmark');
@@ -174,13 +178,91 @@ $circleX.addEventListener('click', function () {
 });
 
 var $star = document.querySelector('.fa-star');
-$star.addEventListener('click', function (event) {
+$star.addEventListener('click', addToFavorites);
+
+function addToFavorites(event) {
+
   if (event.target.tagName !== 'I') {
     return;
   }
 
-  if (data.favorites.indexOf(event.target.getAttribute('data-name')) === -1) {
-    data.favorites.push(event.target.getAttribute('data-name'));
+  if (data.favNames.indexOf($modal.getAttribute('data-name')) === -1) {
+    var allChars = xhr.response;
+    for (var i = 0; i < allChars.length; i++) {
+      if ($modal.getAttribute('data-name') === allChars[i].name) {
+        data.favorites.push(allChars[i]);
+        data.favNames.push($modal.getAttribute('data-name'));
+      }
+    }
   }
   $star.className = 'fa-solid fa-star';
-});
+  clearFavorites($favoriteCharCon);
+  loadFavorites();
+}
+
+var $navItems = document.querySelector('.nav-items');
+var $view = document.querySelectorAll('.view');
+
+function viewSwap(event) {
+  if (event.target.tagName !== 'A') {
+    return;
+  }
+  var $dataView = event.target.getAttribute('data-view');
+  for (var i = 0; i < $view.length; i++) {
+    if ($dataView === $view[i].getAttribute('data-view')) {
+      $view[i].className = 'view';
+    } else {
+      $view[i].className = 'view hidden';
+    }
+  }
+}
+
+$navItems.addEventListener('click', viewSwap);
+var $favoriteCharCon = document.querySelector('.favorite-char-container');
+function loadFavorites() {
+
+  for (var i = 0; i < data.favorites.length; i++) {
+    var a = document.createElement('a');
+    a.className = 'character-tile favorite-char-tile';
+    a.setAttribute('data-char', data.favorites[i].name);
+    var img = document.createElement('img');
+
+    if (data.favorites[i].image === '') {
+      img.src = 'images/No-Image-Placeholder.svg.png';
+    } else {
+      img.src = data.favorites[i].image;
+    }
+
+    var div = document.createElement('div');
+    div.className = 'character-name';
+    div.textContent = data.favorites[i].name;
+    a.appendChild(img);
+    a.appendChild(div);
+
+    $favoriteCharCon.appendChild(a);
+  }
+  var $favoriteCharTile = document.querySelectorAll('.favorite-char-tile');
+  for (var index = 0; index < $favoriteCharTile.length; index++) {
+    $favoriteCharTile[index].addEventListener('click', function (event) {
+      displayModal(event);
+    });
+  }
+}
+
+function clearFavorites(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+function loadView(event) {
+  for (var i = 0; i < $view.length; i++) {
+    if (data.view === $view[i].getAttribute('data-view')) {
+      $view[i].className = 'view';
+    } else {
+      $view[i].className = 'view hidden';
+    }
+  }
+}
+
+window.addEventListener('DOMContentLoaded', loadView);
