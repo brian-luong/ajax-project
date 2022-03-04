@@ -178,9 +178,9 @@ $circleX.addEventListener('click', function () {
 });
 
 var $star = document.querySelector('.fa-star');
-$star.addEventListener('click', addToFavorites);
+$star.addEventListener('click', toggleFavorite);
 
-function addToFavorites(event) {
+function toggleFavorite(event) {
 
   if (event.target.tagName !== 'I') {
     return;
@@ -194,8 +194,18 @@ function addToFavorites(event) {
         data.favNames.push($modal.getAttribute('data-name'));
       }
     }
+    $star.className = 'fa-solid fa-star';
+  } else if (data.favNames.indexOf($modal.getAttribute('data-name')) > -1) {
+    for (let i = 0; i < data.favorites.length; i++) {
+      if ($modal.getAttribute('data-name') === data.favorites[i].name) {
+        var index = data.favNames.indexOf($modal.getAttribute('data-name'));
+        data.favNames.splice(index, 1);
+        data.favorites.splice(index, 1);
+      }
+    }
+    $star.className = 'fa-regular fa-star';
+
   }
-  $star.className = 'fa-solid fa-star';
   clearFavorites($favoriteCharCon);
   loadFavorites();
 }
@@ -219,6 +229,7 @@ function viewSwap(event) {
 
 $navItems.addEventListener('click', viewSwap);
 var $favoriteCharCon = document.querySelector('.favorite-char-container');
+
 function loadFavorites() {
 
   for (var i = 0; i < data.favorites.length; i++) {
