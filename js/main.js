@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
+xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
 xhr.responseType = 'json';
 xhr.addEventListener('load', displayAll);
 xhr.send();
